@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/avatar";
-import { PenSquare, Search, Mic, ChevronLeft, Plus, Smile, Mic as MicIcon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { PenSquare, Search, Mic, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
 
-const MessageItem = ({ avatar, name, message, time, isSelected }) => (
+const MessageItem = ({ avatar, name, message, time, isSelected, onClick }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3 }}
     className={`flex items-center p-4 ${isSelected ? 'bg-blue-600' : 'hover:bg-gray-900'} transition-colors duration-200 cursor-pointer`}
+    onClick={onClick}
   >
     <Avatar className="h-12 w-12 mr-4 bg-gray-700 flex items-center justify-center text-lg font-semibold">
       {avatar}
@@ -25,37 +26,12 @@ const MessageItem = ({ avatar, name, message, time, isSelected }) => (
   </motion.div>
 );
 
-const NewMessage = ({ isOpen, onClose }) => (
-  <Dialog open={isOpen} onOpenChange={onClose}>
-    <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white p-0">
-      <div className="flex justify-between items-center p-4 border-b border-gray-800">
-        <span className="text-lg font-semibold">New Message</span>
-        <button onClick={onClose} className="text-blue-500">Cancel</button>
-      </div>
-      <div className="p-4">
-        <div className="flex items-center mb-4">
-          <span className="text-gray-400 mr-2">To:</span>
-          <Input className="flex-grow bg-transparent border-none text-white focus:ring-0" />
-          <Plus className="text-blue-500 h-6 w-6" />
-        </div>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-800">
-        <div className="flex items-center">
-          <Plus className="text-gray-400 h-6 w-6 mr-2" />
-          <Input 
-            className="flex-grow bg-gray-800 text-white rounded-full px-4 py-2 focus:ring-0"
-            placeholder="iMessage"
-          />
-          <Smile className="text-gray-400 h-6 w-6 ml-2" />
-          <MicIcon className="text-gray-400 h-6 w-6 ml-2" />
-        </div>
-      </div>
-    </DialogContent>
-  </Dialog>
-);
-
 const Messages = () => {
-  const [isNewMessageOpen, setIsNewMessageOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMessageClick = (name) => {
+    navigate(`/chat/${name}`);
+  };
 
   return (
     <div className="bg-black min-h-screen text-white">
@@ -68,7 +44,7 @@ const Messages = () => {
         <div className="flex justify-between items-center p-4 border-b border-gray-800">
           <ChevronLeft className="text-blue-500 h-6 w-6" />
           <h1 className="text-2xl font-bold">Messages</h1>
-          <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => setIsNewMessageOpen(true)} />
+          <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => navigate('/new-message')} />
         </div>
         
         <div className="px-4 py-3">
@@ -92,34 +68,38 @@ const Messages = () => {
         <Avatar className="mx-auto h-24 w-24 text-4xl font-semibold bg-gray-700 ring-4 ring-blue-500">
           JG
         </Avatar>
-        <p className="text-center mt-3 text-xl font-semibold">David Goggins</p>
+        <p className="text-center mt-3 text-xl font-semibold">Jaspreet</p>
       </motion.div>
 
       <div className="mt-6 space-y-1">
         <MessageItem 
-          avatar="PG"
-          name="Paul Graham"
-          message="Make sure send over that investor report."
+          avatar="I"
+          name="Ishu"
+          message="Make sure it's charged and put it near tatagaru"
           time="Yesterday"
+          onClick={() => handleMessageClick('Ishu')}
         />
         <MessageItem 
           avatar="22"
           name="22395"
-          message="Your Intro verification code is: 8888"
+          message="Your Intro verification code is: 9217"
           time="Yesterday"
+          onClick={() => handleMessageClick('22395')}
         />
         <MessageItem 
           avatar="64"
           name="64132"
-          message="Luma: Risa Lu invited you to OpenAI and Anthropic Presents: AGI/Super-Intel..."
+          message="Luma: Lisa Yu invited you to AWS and 99VC Presents: GTM/Sales Power Hou..."
           time="Yesterday"
           isSelected={true}
+          onClick={() => handleMessageClick('64132')}
         />
         <MessageItem 
           avatar="+1"
-          name="+1 (510) 555-5555"
-          message="Hey, Grat! Great workout today; we'll hit arms and core tomorrow..."
+          name="+1 (510) 332-1576"
+          message="Hey, Avinav! Kick off your LDW with ThreeTrees & CB delivery! 💐🌸..."
           time="Yesterday"
+          onClick={() => handleMessageClick('+1 (510) 332-1576')}
         />
         <MessageItem 
           avatar={
@@ -129,23 +109,19 @@ const Messages = () => {
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs">I</span>
             </div>
           }
-          name="Elon Musk"
+          name="Dad, Mom & Ishu"
           message="In a meeting till 12:30"
           time="Yesterday"
+          onClick={() => handleMessageClick('Dad, Mom & Ishu')}
         />
         <MessageItem 
           avatar="39"
-          name="33333"
-          message="agencybot generated $55555.55 in sales and trading in the last 24 hours...."
+          name="39781"
+          message="AI for Science Research Frontier: Paper Reading is tomorrow 6:30pm...."
           time="Wednesday"
+          onClick={() => handleMessageClick('39781')}
         />
       </div>
-
-      <AnimatePresence>
-        {isNewMessageOpen && (
-          <NewMessage isOpen={isNewMessageOpen} onClose={() => setIsNewMessageOpen(false)} />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
