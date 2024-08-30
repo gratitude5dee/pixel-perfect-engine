@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/avatar";
-import { PenSquare, Search, Mic, ChevronLeft, Plus, Smile, Mic as MicIcon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { PenSquare, Search, Mic, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
 
 const MessageItem = ({ avatar, name, message, time, isSelected }) => (
   <motion.div
@@ -55,7 +55,7 @@ const NewMessage = ({ isOpen, onClose }) => (
 );
 
 const Messages = () => {
-  const [isNewMessageOpen, setIsNewMessageOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="bg-black min-h-screen text-white">
@@ -68,7 +68,7 @@ const Messages = () => {
         <div className="flex justify-between items-center p-4 border-b border-gray-800">
           <ChevronLeft className="text-blue-500 h-6 w-6" />
           <h1 className="text-2xl font-bold">Messages</h1>
-          <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => setIsNewMessageOpen(true)} />
+          <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => navigate('/new-message')} />
         </div>
         
         <div className="px-4 py-3">
@@ -141,11 +141,6 @@ const Messages = () => {
         />
       </div>
 
-      <AnimatePresence>
-        {isNewMessageOpen && (
-          <NewMessage isOpen={isNewMessageOpen} onClose={() => setIsNewMessageOpen(false)} />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
