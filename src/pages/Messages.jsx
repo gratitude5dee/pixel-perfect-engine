@@ -33,6 +33,10 @@ const Messages = () => {
     navigate(`/chat/${name}`);
   };
 
+  const handleBackButton = () => {
+    navigate('/');
+  };
+
   return (
     <div className="bg-black min-h-screen text-white">
       <motion.div
@@ -42,7 +46,7 @@ const Messages = () => {
         className="sticky top-0 z-10 bg-black"
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-800">
-          <ChevronLeft className="text-blue-500 h-6 w-6" />
+          <ChevronLeft className="text-blue-500 h-6 w-6 cursor-pointer" onClick={handleBackButton} />
           <h1 className="text-2xl font-bold">Messages</h1>
           <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => navigate('/chat/new')} />
         </div>
