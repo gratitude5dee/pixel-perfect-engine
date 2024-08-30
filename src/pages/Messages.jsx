@@ -92,33 +92,33 @@ const Messages = () => {
         <Avatar className="mx-auto h-24 w-24 text-4xl font-semibold bg-gray-700 ring-4 ring-blue-500">
           JG
         </Avatar>
-        <p className="text-center mt-3 text-xl font-semibold">Jaspreet</p>
+        <p className="text-center mt-3 text-xl font-semibold">David Goggins</p>
       </motion.div>
 
       <div className="mt-6 space-y-1">
         <MessageItem 
-          avatar="I"
-          name="Ishu"
-          message="Make sure it's charged and put it near tatagaru"
+          avatar="PG"
+          name="Paul Graham"
+          message="Make sure send over that investor report."
           time="Yesterday"
         />
         <MessageItem 
           avatar="22"
           name="22395"
-          message="Your Intro verification code is: 9217"
+          message="Your Intro verification code is: 8888"
           time="Yesterday"
         />
         <MessageItem 
           avatar="64"
           name="64132"
-          message="Luma: Lisa Yu invited you to AWS and 99VC Presents: GTM/Sales Power Hou..."
+          message="Luma: Risa Lu invited you to OpenAI and Anthropic Presents: AGI/Super-Intel..."
           time="Yesterday"
           isSelected={true}
         />
         <MessageItem 
           avatar="+1"
-          name="+1 (510) 332-1576"
-          message="Hey, Avinav! Kick off your LDW with ThreeTrees & CB delivery! 💐🌸..."
+          name="+1 (510) 555-5555"
+          message="Hey, Grat! Great workout today; we'll hit arms and core tomorrow..."
           time="Yesterday"
         />
         <MessageItem 
@@ -129,14 +129,14 @@ const Messages = () => {
               <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs">I</span>
             </div>
           }
-          name="Dad, Mom & Ishu"
+          name="Elon Musk"
           message="In a meeting till 12:30"
           time="Yesterday"
         />
         <MessageItem 
           avatar="39"
-          name="39781"
-          message="AI for Science Research Frontier: Paper Reading is tomorrow 6:30pm...."
+          name="33333"
+          message="agencybot generated $55555.55 in sales and trading in the last 24 hours...."
           time="Wednesday"
         />
       </div>
