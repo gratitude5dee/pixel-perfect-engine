@@ -64,6 +64,7 @@ const Messages = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         className="mt-6 mb-8"
+        onClick={() => handleMessageClick('Jaspreet')}
       >
         <Avatar className="mx-auto h-24 w-24 text-4xl font-semibold bg-gray-700 ring-4 ring-blue-500">
           JG
