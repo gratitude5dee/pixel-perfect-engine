@@ -75,7 +75,7 @@ const Messages = () => {
         <MessageItem 
           avatar="PG"
           name="Paul Graham"
-          message="Make sure to send out that investor update EOD."
+          message="Make sure to send out that invest...."
           time="Yesterday"
           onClick={() => handleMessageClick('Paul Graham')}
         />
@@ -89,7 +89,7 @@ const Messages = () => {
         <MessageItem 
           avatar="64"
           name="64132"
-          message="Luma: Sam Altman invited you to OpenAI and Anthropic Presents: AGI/Super-Intel..."
+          message="Luma: Sam Altman invited you to OpenA..."
           time="Yesterday"
           isSelected={true}
           onClick={() => handleMessageClick('64132')}
@@ -97,7 +97,7 @@ const Messages = () => {
         <MessageItem 
           avatar="+1"
           name="+1 (510) 555-5555"
-          message="Hey, Grat! Starting a guided meditation in 10 ..."
+          message="Hey, Grat! Starting a guided m..."
           time="Yesterday"
           onClick={() => handleMessageClick('+1 (510) 555-5555')}
         />
@@ -111,7 +111,7 @@ const Messages = () => {
         <MessageItem 
           avatar="44"
           name="44444"
-          message="Great job with leg day; arms and core tomorrow...."
+          message="Great job with leg day; arms..."
           time="Wednesday"
           onClick={() => handleMessageClick('44444')}
         />
