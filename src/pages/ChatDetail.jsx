@@ -45,6 +45,10 @@ const ChatDetail = () => {
     navigate('/messages');
   };
 
+  const handleProfilePictureUpload = (imageData) => {
+    setProfilePicture(imageData);
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', position: 'relative', overflow: 'hidden', background: '#f0f0f0' }}>
       <Audiovisualizer currentVolume={currentVolume} isSessionActive={isCallActive || isVideoActive} />
