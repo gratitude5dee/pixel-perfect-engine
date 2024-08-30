@@ -1,17 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Input } from "@/components/ui/input";
 import { Avatar } from "@/components/ui/avatar";
 import { PenSquare, Search, Mic, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
-const MessageItem = ({ avatar, name, message, time, isSelected, onClick }) => (
+const MessageItem = ({ avatar, name, message, time, isSelected }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3 }}
     className={`flex items-center p-4 ${isSelected ? 'bg-blue-600' : 'hover:bg-gray-900'} transition-colors duration-200 cursor-pointer`}
-    onClick={onClick}
   >
     <Avatar className="h-12 w-12 mr-4 bg-gray-700 flex items-center justify-center text-lg font-semibold">
       {avatar}
@@ -27,16 +25,6 @@ const MessageItem = ({ avatar, name, message, time, isSelected, onClick }) => (
 );
 
 const Messages = () => {
-  const navigate = useNavigate();
-
-  const handleMessageClick = (name) => {
-    navigate(`/chat/${name}`);
-  };
-
-  const handleBackButton = () => {
-    navigate('/');
-  };
-
   return (
     <div className="bg-black min-h-screen text-white">
       <motion.div
@@ -46,9 +34,9 @@ const Messages = () => {
         className="sticky top-0 z-10 bg-black"
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-800">
-          <ChevronLeft className="text-blue-500 h-6 w-6 cursor-pointer" onClick={handleBackButton} />
+          <ChevronLeft className="text-blue-500 h-6 w-6" />
           <h1 className="text-2xl font-bold">Messages</h1>
-          <PenSquare className="text-blue-500 h-6 w-6 cursor-pointer" onClick={() => navigate('/chat/new')} />
+          <PenSquare className="text-blue-500 h-6 w-6" />
         </div>
         
         <div className="px-4 py-3">
@@ -81,14 +69,12 @@ const Messages = () => {
           name="Ishu"
           message="Make sure it's charged and put it near tatagaru"
           time="Yesterday"
-          onClick={() => handleMessageClick('Ishu')}
         />
         <MessageItem 
           avatar="22"
           name="22395"
           message="Your Intro verification code is: 9217"
           time="Yesterday"
-          onClick={() => handleMessageClick('22395')}
         />
         <MessageItem 
           avatar="64"
@@ -96,14 +82,12 @@ const Messages = () => {
           message="Luma: Lisa Yu invited you to AWS and 99VC Presents: GTM/Sales Power Hou..."
           time="Yesterday"
           isSelected={true}
-          onClick={() => handleMessageClick('64132')}
         />
         <MessageItem 
           avatar="+1"
           name="+1 (510) 332-1576"
           message="Hey, Avinav! Kick off your LDW with ThreeTrees & CB delivery! 💐🌸..."
           time="Yesterday"
-          onClick={() => handleMessageClick('+1 (510) 332-1576')}
         />
         <MessageItem 
           avatar={
@@ -116,14 +100,12 @@ const Messages = () => {
           name="Dad, Mom & Ishu"
           message="In a meeting till 12:30"
           time="Yesterday"
-          onClick={() => handleMessageClick('Dad, Mom & Ishu')}
         />
         <MessageItem 
           avatar="39"
           name="39781"
           message="AI for Science Research Frontier: Paper Reading is tomorrow 6:30pm...."
           time="Wednesday"
-          onClick={() => handleMessageClick('39781')}
         />
       </div>
     </div>
