@@ -39,6 +39,15 @@ const ChatDetail = () => {
   const fileInputRef = useRef(null);
   const timerIntervalRef = useRef(null);
 
+  const openSettings = useCallback(() => {
+    console.log("Opening settings...");
+    // Add your settings logic here
+  }, []);
+
+  const handleProfilePictureUpload = useCallback((imageData) => {
+    setProfilePicture(imageData);
+  }, []);
+
   // ... (keep all the existing functions from the ChatApp component)
 
   const handleBackButton = () => {
